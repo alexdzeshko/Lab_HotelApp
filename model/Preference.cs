@@ -8,5 +8,13 @@ namespace Lab_HotelApp.model
 {
     class Preference
     {
+        private String value;
+
+        public Preference(String value)
+        {
+            this.value = value;
+        }
+
+        
     }
 }

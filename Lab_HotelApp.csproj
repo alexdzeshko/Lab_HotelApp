@@ -50,6 +50,15 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="model\BookingOperation.cs" />
+    <Compile Include="model\Customer.cs" />
+    <Compile Include="model\Employee.cs" />
+    <Compile Include="model\Hotel.cs" />
+    <Compile Include="model\Person.cs" />
+    <Compile Include="model\IEmployeeOperation.cs" />
+    <Compile Include="model\IModel.cs" />
+    <Compile Include="model\Preference.cs" />
+    <Compile Include="model\Room.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

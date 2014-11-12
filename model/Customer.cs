@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab_HotelApp.model
 {
-    class Customer
+    class Customer : Person
     {
     }
 }

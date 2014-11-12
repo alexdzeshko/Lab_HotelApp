@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace Lab_HotelApp.model
 {
-    class Room
+    class Room : IModel
     {
         private string mType;
+
         private int mBedCount;
+        
+        private double mPrice;
+
+        private HashSet<Preference> mPreferenceList;
     }
 }

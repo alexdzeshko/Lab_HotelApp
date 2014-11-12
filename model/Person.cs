@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab_HotelApp.model
 {
-    abstract class Person
+    abstract class Person : IModel
     {
         private string mName;
 
