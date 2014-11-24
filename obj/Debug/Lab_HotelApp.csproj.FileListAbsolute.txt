@@ -1,1 +1,17 @@
 D:\desktop\Projects\Lab_HotelApp\Lab_HotelApp\bin\Debug\Lab_HotelApp.exe.config
+C:\Users\dzianis_roi\projects\labs\Hotels\bin\Debug\Lab_HotelApp.exe.config
+C:\Users\dzianis_roi\projects\labs\Hotels\bin\Debug\Lab_HotelApp.exe
+C:\Users\dzianis_roi\projects\labs\Hotels\bin\Debug\Lab_HotelApp.pdb
+C:\Users\dzianis_roi\projects\labs\Hotels\bin\Debug\mscorlib.dll
+C:\Users\dzianis_roi\projects\labs\Hotels\bin\Debug\ru\mscorlib.resources.dll
+C:\Users\dzianis_roi\projects\labs\Hotels\bin\Debug\normidna.nlp
+C:\Users\dzianis_roi\projects\labs\Hotels\bin\Debug\normnfc.nlp
+C:\Users\dzianis_roi\projects\labs\Hotels\bin\Debug\normnfd.nlp
+C:\Users\dzianis_roi\projects\labs\Hotels\bin\Debug\normnfkc.nlp
+C:\Users\dzianis_roi\projects\labs\Hotels\bin\Debug\normnfkd.nlp
+C:\Users\dzianis_roi\projects\labs\Hotels\obj\Debug\Lab_HotelApp.csprojResolveAssemblyReference.cache
+C:\Users\dzianis_roi\projects\labs\Hotels\obj\Debug\Lab_HotelApp.Properties.Resources.resources
+C:\Users\dzianis_roi\projects\labs\Hotels\obj\Debug\Lab_HotelApp.csproj.GenerateResource.Cache
+C:\Users\dzianis_roi\projects\labs\Hotels\obj\Debug\Lab_HotelApp.exe
+C:\Users\dzianis_roi\projects\labs\Hotels\obj\Debug\Lab_HotelApp.pdb
+C:\Users\dzianis_roi\projects\labs\Hotels\obj\Debug\Lab_HotelApp.Form1.resources
