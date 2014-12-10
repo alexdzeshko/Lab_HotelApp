@@ -22,6 +22,11 @@ namespace Lab_HotelApp.model
             Preferences = preferences;
         }
 
+        public Hotel()
+        {
+            // TODO: Complete member initialization
+        }
+
 
         public int ID
         {
@@ -61,6 +66,19 @@ namespace Lab_HotelApp.model
             set { this._Preferences = value; }
             //get the adress 
             get { return this._Preferences; }
+        }
+
+
+
+        public IModel fromString(string data)
+        {
+            return new Hotel();
+        }
+
+        public string toString()
+        {
+            System.Func<string, IModel> function = fromString; 
+            return String.Empty;
         }
     }
 }

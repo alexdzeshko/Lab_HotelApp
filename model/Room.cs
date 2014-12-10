@@ -8,12 +8,12 @@ namespace Lab_HotelApp.model
 {
     class Room : IModel
     {
-        private string mType;
+        private string _type;
 
-        private int mBedCount;
+        private int _bedCount;
         
-        private double mPrice;
+        private double _price;
 
-        private HashSet<Preference> mPreferenceList;
+        private HashSet<Preference> _preferenceList;
     }
 }

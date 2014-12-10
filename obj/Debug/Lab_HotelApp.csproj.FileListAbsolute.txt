@@ -15,3 +15,11 @@ C:\Users\dzianis_roi\projects\labs\Hotels\obj\Debug\Lab_HotelApp.csproj.Generate
 C:\Users\dzianis_roi\projects\labs\Hotels\obj\Debug\Lab_HotelApp.exe
 C:\Users\dzianis_roi\projects\labs\Hotels\obj\Debug\Lab_HotelApp.pdb
 C:\Users\dzianis_roi\projects\labs\Hotels\obj\Debug\Lab_HotelApp.Form1.resources
+D:\desktop\Projects\Lab_HotelApp\Lab_HotelApp\obj\Debug\Lab_HotelApp.csprojResolveAssemblyReference.cache
+D:\desktop\Projects\Lab_HotelApp\Lab_HotelApp\obj\Debug\Lab_HotelApp.Form1.resources
+D:\desktop\Projects\Lab_HotelApp\Lab_HotelApp\obj\Debug\Lab_HotelApp.Properties.Resources.resources
+D:\desktop\Projects\Lab_HotelApp\Lab_HotelApp\obj\Debug\Lab_HotelApp.csproj.GenerateResource.Cache
+D:\desktop\Projects\Lab_HotelApp\Lab_HotelApp\bin\Debug\Lab_HotelApp.exe
+D:\desktop\Projects\Lab_HotelApp\Lab_HotelApp\bin\Debug\Lab_HotelApp.pdb
+D:\desktop\Projects\Lab_HotelApp\Lab_HotelApp\obj\Debug\Lab_HotelApp.exe
+D:\desktop\Projects\Lab_HotelApp\Lab_HotelApp\obj\Debug\Lab_HotelApp.pdb

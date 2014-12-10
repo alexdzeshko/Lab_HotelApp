@@ -11,11 +11,11 @@ using Lab_HotelApp.model;
 
 namespace Lab_HotelApp
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         static List<Hotel> hotels = new List<Hotel>();
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             FillHotels();
@@ -26,12 +26,16 @@ namespace Lab_HotelApp
             FillListView();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        
+        private void btnOpen_Click(object sender, EventArgs e)
         {
-            Hotel h = new Hotel()
+            foreach (ListViewItem eachItem in hotelsListView.SelectedItems)
+            {
+                hotelsListView.Items.Remove(eachItem);
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnDel_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem eachItem in hotelsListView.SelectedItems)
             {
@@ -71,6 +75,11 @@ namespace Lab_HotelApp
                 lvi.Tag = h.ID;
                 hotelsListView.Items.Add(lvi);
             });
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Hotel h = new Hotel();
         }
     }
 }

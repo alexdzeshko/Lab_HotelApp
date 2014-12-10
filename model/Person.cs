@@ -8,8 +8,8 @@ namespace Lab_HotelApp.model
 {
     abstract class Person : IModel
     {
-        private string mName;
+        private string _name;
 
-        private DateTime mBirthDate;
+        private DateTime _birthDate;
     }
 }

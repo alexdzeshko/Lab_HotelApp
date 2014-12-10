@@ -8,7 +8,7 @@ namespace Lab_HotelApp.model
 {
     class Employee : Person, IEmployeeOperation
     {
-        private string mRank;
+        private string _rank;
         
     }
 }
