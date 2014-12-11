@@ -26,6 +26,10 @@
 *.unsuccessfulbuild
 ipch/
 [Oo]bj/
+obj/
+Obj/
+bin/
+Bin/
 [Bb]in
 [Dd]ebug*/
 [Rr]elease*/
