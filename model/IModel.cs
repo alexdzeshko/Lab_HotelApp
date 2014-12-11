@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Lab_HotelApp.model
 {
-    interface IModel
+    public interface IModel
     {
-        public IModel fromString(String data);
+        IModel fromString(String data);
 
-        public String toString();
+        String toString();
     }
 }

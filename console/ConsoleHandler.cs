@@ -1,4 +1,5 @@
-﻿using Lab_HotelApp.model;
+﻿using Lab_HotelApp.data_;
+using Lab_HotelApp.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,9 @@ namespace Lab_HotelApp.console
 {
     class ConsoleHandler
     {
+        public static string HELP = "'-sh' for show all hotels, \n '-oh {hotel name}' to view hotel info, \n '-ah {[hotel name]|[adress]|[preferences]}' to create new hotel"+
+            "'-dh {hotel name}' to delete hotel, \n '-upd {hotel name} {param} {value}'";
+
         class Command
         {
             public static readonly Command HELP= new Command("Help","-h");
@@ -28,29 +32,30 @@ namespace Lab_HotelApp.console
             }
         }
 
-        class Data
-        {
-            public static string Hotel1 = "0~Hotel_1~Grodno~0~0";
-            public static string Hotel2 = "1~Hotel_2~Minsk~0~0";
-            public static string Hotel3 = "2~Hotel_3~Minsk~0~0";
-            public static string Hotel4 = "3~Hotel_4~Grodno~0~0";
-
-            public static string[] Hotels = { Hotel1, Hotel2, Hotel3, Hotel4};
-        }
-
         public static string ProcessInput(string[] args)
         {
+            if (args.Length == 0)
+            {
+                return "Empty args";
+            }
             string command = args[0];
             string result = "";
             if (command.Equals(Command.HELP._commandName))
             {
-                foreach (string h in Data.Hotels) {
-                    Hotel hotel = (Hotel)new Hotel().fromString(h);
-                    //result+=hotel.toString();
-                    result+=h;
+                result = HELP;
+            } 
+            else if(Command.SHOW_HOTELS._commandName.Equals(command))
+            {
+                foreach (Hotel h in DataManager.Instance.getMockHotels()) {
+                    
+                    result+=h.ToString();
                     result+="\n";
                 }
-            
+
+            }
+            else
+            {
+                result = "invalid command";
             }
             return result;
         }

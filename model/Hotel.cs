@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lab_HotelApp.model
 {
-    class Hotel : IModel
+    public class Hotel : IModel
     {
         private int _ID;
         private string _Name;
@@ -82,6 +82,20 @@ namespace Lab_HotelApp.model
         {
              
             return String.Empty;
+        }
+
+        public override string ToString() {
+            return String.Join(" : ", _Name, _Adress, "rooms = " + _Rooms.Count, getPreferenceString());
+        }
+
+        private object getPreferenceString()
+        {
+            string s = "";
+            foreach (Preference p in Preferences)
+            {
+                s += p.Value+", ";
+            }
+            return s;
         }
     }
 }

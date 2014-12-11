@@ -10,7 +10,7 @@ namespace Lab_HotelApp.data_
     class IOManager
     {
 
-        private static const string DIR = "data";
+        private const string DIR = "data";
 
         public static void createFile(String name)
         {

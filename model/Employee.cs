@@ -20,5 +20,10 @@ namespace Lab_HotelApp.model
 
         public string Rank { get; set; }
         public string Salary { get; set; }
+
+        public override IModel fromString(string data)
+        {
+            return null;
+        }
     }
 }

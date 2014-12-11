@@ -21,7 +21,9 @@ namespace Lab_HotelApp
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new MainForm());
 
-            ConsoleHandler.ProcessInput(args);
+            Console.WriteLine("Hello World!");
+            
+            Console.WriteLine(ConsoleHandler.ProcessInput(args));
         }
     }
 }

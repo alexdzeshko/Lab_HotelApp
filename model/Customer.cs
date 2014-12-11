@@ -22,5 +22,10 @@ namespace Lab_HotelApp.model
         public string Email { get; set; }
         public string CcNumber { get; set; }
         public string CcHolderName { get; set; }
+
+        public override IModel fromString(string data)
+        {
+            return null;
+        }
     }
 }

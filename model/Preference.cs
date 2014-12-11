@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab_HotelApp.model
 {
-    class Preference
+    public class Preference
     {
         private String _Value;
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab_HotelApp.model
 {
-    abstract class Person : IModel
+    public abstract class Person : IModel
     {
         private string _name;
 
@@ -20,5 +20,12 @@ namespace Lab_HotelApp.model
 
         public string Name { get; set; }
         public DateTime BirthDay { get; set; }
+
+        public abstract IModel fromString(string data);
+
+        public string toString()
+        {
+            return String.Join("~", _name, _birthDate);
+        }
     }
 }
