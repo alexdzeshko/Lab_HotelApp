@@ -9,6 +9,16 @@ namespace Lab_HotelApp.model
     class Employee : Person, IEmployeeOperation
     {
         private string _rank;
-        
+        private string _salary;
+
+        public Employee(string name, DateTime bday, string rank, string salary)
+            : base(name, bday)
+        {
+            _rank = rank;
+            _salary = salary;
+        }
+
+        public string Rank { get; set; }
+        public string Salary { get; set; }
     }
 }

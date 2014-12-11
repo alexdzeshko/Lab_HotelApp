@@ -15,5 +15,7 @@ namespace Lab_HotelApp.model
         private double _price;
 
         private HashSet<Preference> _preferenceList;
+
+
     }
 }

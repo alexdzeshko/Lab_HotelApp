@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,7 @@ namespace Lab_HotelApp.model
 
         public Hotel()
         {
+            
             // TODO: Complete member initialization
         }
 
@@ -72,12 +74,13 @@ namespace Lab_HotelApp.model
 
         public IModel fromString(string data)
         {
-            return new Hotel();
+            string[] d = data.Split('~');
+            return new Hotel(Int16.Parse(d[0]), d[1], d[2], new List<Room>(), new List<Preference>());
         }
 
         public string toString()
         {
-            System.Func<string, IModel> function = fromString; 
+             
             return String.Empty;
         }
     }

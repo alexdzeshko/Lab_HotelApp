@@ -11,5 +11,14 @@ namespace Lab_HotelApp.model
         private string _name;
 
         private DateTime _birthDate;
+
+        public Person(string name, DateTime birthDate)
+        {
+            _name = name;
+            _birthDate = birthDate;
+        }
+
+        public string Name { get; set; }
+        public DateTime BirthDay { get; set; }
     }
 }

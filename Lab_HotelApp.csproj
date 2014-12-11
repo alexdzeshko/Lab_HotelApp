@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="console\ConsoleHandler.cs" />
     <Compile Include="data_\DataManager.cs" />
     <Compile Include="data_\IOManager.cs" />
     <Compile Include="MainForm.cs">
