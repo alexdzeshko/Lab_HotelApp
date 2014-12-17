@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lab_HotelApp.model;
+using Lab_HotelApp.data_;
 
 namespace Lab_HotelApp
 {
     public partial class MainForm : Form
     {
-        static List<Hotel> hotels = new List<Hotel>();
+        List<Hotel> hotels = new List<Hotel>();
 
         public MainForm()
         {
@@ -29,23 +30,18 @@ namespace Lab_HotelApp
         
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            foreach (ListViewItem eachItem in hotelsListView.SelectedItems)
-            {
-                hotelsListView.Items.Remove(eachItem);
-            }
+            
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            foreach (ListViewItem eachItem in hotelsListView.SelectedItems)
-            {
-                hotelsListView.Items.Remove(eachItem);
-            }
+            
         }
 
         private void FillHotels()
         {
-            List<Room> rooms = new List<Room>();
+            hotels = DataManager.Instance.GetHotels();
+            /*List<Room> rooms = new List<Room>();
             List<Preference> preferences = new List<Preference>();
 
             for (int i = 0; i <= 10; i++)
@@ -62,7 +58,7 @@ namespace Lab_HotelApp
             {
                 Hotel h = new Hotel(i, "Hotel #" + i, "address #" + i, rooms, preferences);
                 hotels.Add(h);
-            }
+            }*/
         }
 
         private void FillListView()
@@ -79,7 +75,18 @@ namespace Lab_HotelApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Hotel h = new Hotel();
+            CreateHotelForm Form = new CreateHotelForm(new Callback(Update));
+            Form.Show();
         }
+
+        public void Update(bool update)
+        {
+            if (update)
+            {
+                FillHotels();
+                FillListView();
+            }
+        }
+        public delegate void Callback(bool action);
     }
 }

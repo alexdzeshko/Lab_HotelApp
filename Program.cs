@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Lab_HotelApp.model;
 using System.Drawing;
 using Lab_HotelApp.console;
+using System.Runtime.InteropServices;
 
 namespace Lab_HotelApp
 {
@@ -17,13 +18,22 @@ namespace Lab_HotelApp
         //[STAThread]
         static void Main(string[] args)
         {
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MainForm());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainForm());
 
-            Console.WriteLine("Hello World!");
+            //AttachConsole(-1);
+
+            //Console.WriteLine("Hello World!");
             
-            Console.WriteLine(ConsoleHandler.ProcessInput(args));
+            //Console.WriteLine(ConsoleHandler.ProcessInput(args));
+            
+            
+            
         }
+
+        [DllImport("kernel32.dll")]
+        static extern bool AttachConsole(int dwProcessId);
+        private const int ATTACH_PARENT_PROCESS = -1;
     }
 }

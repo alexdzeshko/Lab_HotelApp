@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Lab_HotelApp.model
 {
-    public class BookingOperation : IModel
+    public class BookingOperation : Model<BookingOperation>
     {
-        private Hotel mHotel;
-        private Customer mCustomer;
+        private Hotel _hotel;
+        private Customer _customer;
         private List<Room> mRoomList;
         private int mGuestCount;
 
@@ -18,16 +18,16 @@ namespace Lab_HotelApp.model
 
         }
 
-        public IModel fromString(string data)
+        public override BookingOperation FromString(string data)
         {
             string[] vals = data.Split('~');
             //todo
             return new BookingOperation();
         }
 
-        public string toString()
+        public override string GetWrittableString()
         {
-            return String.Join("~", mHotel.ID, mCustomer.Name, mGuestCount);
+            return String.Join("~", _hotel.ID, _customer.Name, mGuestCount);
         }
     }
     

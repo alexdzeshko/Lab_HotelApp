@@ -45,6 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="console\ConsoleHandler.cs" />
+    <Compile Include="CreateHotelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateHotelForm.Designer.cs">
+      <DependentUpon>CreateHotelForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="data_\DataManager.cs" />
     <Compile Include="data_\IOManager.cs" />
     <Compile Include="MainForm.cs">
@@ -64,6 +70,9 @@
     <Compile Include="model\Room.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CreateHotelForm.resx">
+      <DependentUpon>CreateHotelForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -88,6 +97,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="controller\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

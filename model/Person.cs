@@ -6,26 +6,21 @@ using System.Threading.Tasks;
 
 namespace Lab_HotelApp.model
 {
-    public abstract class Person : IModel
+    public abstract class Person : Model<Person>
     {
-        private string _name;
-
-        private DateTime _birthDate;
 
         public Person(string name, DateTime birthDate)
         {
-            _name = name;
-            _birthDate = birthDate;
+            Name = name;
+            BirthDay = birthDate;
         }
 
         public string Name { get; set; }
         public DateTime BirthDay { get; set; }
 
-        public abstract IModel fromString(string data);
-
-        public string toString()
+        public override string GetWrittableString()
         {
-            return String.Join("~", _name, _birthDate);
+            return String.Join("~", Name, BirthDay);
         }
     }
 }

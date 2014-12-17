@@ -30,6 +30,8 @@ namespace Lab_HotelApp.console
                 _name = name;
                 _commandName = commandName;
             }
+
+
         }
 
         public static string ProcessInput(string[] args)
@@ -46,11 +48,20 @@ namespace Lab_HotelApp.console
             } 
             else if(Command.SHOW_HOTELS._commandName.Equals(command))
             {
-                foreach (Hotel h in DataManager.Instance.getMockHotels()) {
+                foreach (Hotel h in DataManager.Instance.GetHotels()) {
                     
                     result+=h.ToString();
                     result+="\n";
                 }
+
+            }
+            else if (Command.ADD_HOTEL._commandName.Equals(command))
+            {
+                //foreach (Hotel h in DataManager.Instance.AddHotel(DataManager.DEFAULT_HOTEL))
+                //{
+                //    result += h.ToString();
+                //    result += "\n";
+                //}
 
             }
             else

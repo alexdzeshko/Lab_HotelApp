@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lab_HotelApp.model
 {
-    public class Hotel : IModel
+    public class Hotel : Model<Hotel>
     {
         private int _ID;
         private string _Name;
@@ -28,7 +28,13 @@ namespace Lab_HotelApp.model
             
             // TODO: Complete member initialization
         }
-
+        public Hotel(String name, String adress)
+        {
+            Name = name;
+            Adress = adress;
+            Rooms = new List<Room>();
+            Preferences = new List<Preference>();
+        }
 
         public int ID
         {
@@ -72,16 +78,20 @@ namespace Lab_HotelApp.model
 
 
 
-        public IModel fromString(string data)
+        public override Hotel FromString(string data)
         {
+            if (data == null)
+            {
+                return null;
+            }
             string[] d = data.Split('~');
             return new Hotel(Int16.Parse(d[0]), d[1], d[2], new List<Room>(), new List<Preference>());
         }
 
-        public string toString()
+        public override string GetWrittableString()
         {
              
-            return String.Empty;
+            return String.Join("~", ID, Name, Adress);
         }
 
         public override string ToString() {

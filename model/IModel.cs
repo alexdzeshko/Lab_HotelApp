@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Lab_HotelApp.model
 {
-    public interface IModel
+    public abstract class Model<T>
     {
-        IModel fromString(String data);
+        public abstract T FromString(String data);
 
-        String toString();
+        public abstract String GetWrittableString();
     }
 }

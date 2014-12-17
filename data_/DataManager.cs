@@ -13,6 +13,8 @@ namespace Lab_HotelApp.data_
         private static volatile DataManager instance;
         private static object syncRoot = new Object();
 
+        private List<Hotel> _hotels;
+
         private DataManager() {}
 
         public static DataManager Instance
@@ -39,25 +41,57 @@ namespace Lab_HotelApp.data_
 
         public static string[] MockHotels = { Hotel1, Hotel2, Hotel3, Hotel4 };
 
+        public static Hotel DEFAULT_HOTEL = new Hotel().FromString(Hotel1);
 
         public List<Hotel> getMockHotels()
         {
-            List<Hotel> hotels = new List<Hotel>();
-            foreach (string h in MockHotels)
+            if (_hotels == null)
             {
-                Hotel hotel = new Hotel();
-                hotel = (Hotel)hotel.fromString(h);
-                hotels.Add(hotel);
+                _hotels = new List<Hotel>();
             }
-            return hotels;
+            if (_hotels.Count == 0)
+            {
+                foreach (string h in MockHotels)
+                {
+                    Hotel hotel = new Hotel().FromString(h);
+                    _hotels.Add(hotel);
+                }
+            }
+            return _hotels;
         }
 
-        public List<Hotel> getHotels()
+        public void AddHotel(Hotel hotel)
         {
+            if (hotel != null)
+            {
+                hotel.ID = GetNewHotelId();
+                IOManager.updateFile(IOManager.DIR_HOTELS, hotel.ID.ToString(), hotel.GetWrittableString());
+            }
+            
+        }
 
-            IOManager.readFile("hotel.txt");
+        public List<Hotel> GetHotels()
+        {
+            List<Hotel> result = new List<Hotel>();
+            foreach (string fileName in IOManager.GetFiles(IOManager.DIR_HOTELS))
+            {
+                string hotelData = IOManager.readFile(IOManager.DIR_HOTELS, fileName);
+                Hotel hotel = new Hotel().FromString(hotelData);
+                result.Add(hotel);
+            }
             //TODO
-            return new List<Hotel>();
+            return result;
+        }
+
+        private int GetNewHotelId()
+        {
+            int result = 0;
+            string[] files = IOManager.GetFiles(IOManager.DIR_HOTELS);
+            if (files.Length > 0)
+            {
+                result = Int32.Parse(files[files.Length])+1;
+            }
+            return result;
         }
     }
 }

@@ -8,24 +8,21 @@ namespace Lab_HotelApp.model
 {
     class Customer : Person
     {
-        private string _email;
-        private string _ccNumber;
-        private string _ccHolderName;
 
         public Customer(string name, DateTime bday, string email, string ccNumber, string ccHolder)
             : base(name, bday)
         {
-            _email = email;
-            _ccNumber = ccNumber;
-            _ccHolderName = ccHolder;
+            Email = email;
+            CcNumber = ccNumber;
+            CcNumber = ccHolder;
         }
         public string Email { get; set; }
         public string CcNumber { get; set; }
         public string CcHolderName { get; set; }
 
-        public override IModel fromString(string data)
+        public override Person FromString(string data)
         {
-            return null;
+            return null;//TODO:
         }
     }
 }
