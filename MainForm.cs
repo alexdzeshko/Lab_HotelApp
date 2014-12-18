@@ -14,7 +14,7 @@ namespace Lab_HotelApp
 {
     public partial class MainForm : Form
     {
-        List<Hotel> hotels = new List<Hotel>();
+        private List<Hotel> hotels = new List<Hotel>();
 
         public MainForm()
         {
@@ -30,35 +30,27 @@ namespace Lab_HotelApp
         
         private void btnOpen_Click(object sender, EventArgs e)
         {
+            if (hotelsListView.SelectedItems.Count == 1)
+            {
+                Hotel hotel = (Hotel)hotelsListView.SelectedItems[0].Tag;
+                new HotelDetailsForm(hotel, new Callback(Update)).Show();
+            }
             
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            
+            if (hotelsListView.SelectedItems.Count == 1)
+            {
+                Hotel hotel = (Hotel)hotelsListView.SelectedItems[0].Tag;
+                DataManager.DeleteHotel(hotel);
+                Update(true);
+            }
         }
 
         private void FillHotels()
         {
             hotels = DataManager.Instance.GetHotels();
-            /*List<Room> rooms = new List<Room>();
-            List<Preference> preferences = new List<Preference>();
-
-            for (int i = 0; i <= 10; i++)
-            {
-                Room r = new Room();
-                rooms.Add(r);
-            }
-
-            preferences.Add(new Preference("Wi-fi"));
-            preferences.Add(new Preference("TV"));
-            preferences.Add(new Preference("Private pool"));
-
-            for (int i = 0; i <= 10; i++)
-            {
-                Hotel h = new Hotel(i, "Hotel #" + i, "address #" + i, rooms, preferences);
-                hotels.Add(h);
-            }*/
         }
 
         private void FillListView()
@@ -68,7 +60,7 @@ namespace Lab_HotelApp
             hotels.ForEach(delegate(Hotel h)
             {
                 ListViewItem lvi = new ListViewItem(h.Name);
-                lvi.Tag = h.ID;
+                lvi.Tag = h;
                 hotelsListView.Items.Add(lvi);
             });
         }
@@ -88,5 +80,10 @@ namespace Lab_HotelApp
             }
         }
         public delegate void Callback(bool action);
+
+        private void onHotelSelected(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

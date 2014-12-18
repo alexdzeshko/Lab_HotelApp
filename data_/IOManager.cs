@@ -26,14 +26,19 @@ namespace Lab_HotelApp.data_
 
         }
 
-        public static String readFile(string dir, string name)
+        public static String ReadFile(string dir, string name)
         {
             string path = GetPath(dir, name);
+            return ReadFile(path);
+        }
+
+        public static String ReadFile(string path)
+        {
             if (!File.Exists(path))
             {
                 return null;
             }
-            return File.ReadAllText(name, Encoding.UTF8);
+            return File.ReadAllText(path, Encoding.UTF8);
         }
 
         private static string GetPath(string dir, string name)
@@ -54,7 +59,7 @@ namespace Lab_HotelApp.data_
         public static void deleteFile(string dir, string name)
         {
             string path = GetPath(dir, name);
-            if (!File.Exists(path))
+            if (File.Exists(path))
             {
                 File.Delete(path);
             }

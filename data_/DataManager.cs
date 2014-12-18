@@ -1,6 +1,7 @@
 ﻿using Lab_HotelApp.model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,7 +76,7 @@ namespace Lab_HotelApp.data_
             List<Hotel> result = new List<Hotel>();
             foreach (string fileName in IOManager.GetFiles(IOManager.DIR_HOTELS))
             {
-                string hotelData = IOManager.readFile(IOManager.DIR_HOTELS, fileName);
+                string hotelData = IOManager.ReadFile(fileName);
                 Hotel hotel = new Hotel().FromString(hotelData);
                 result.Add(hotel);
             }
@@ -89,9 +90,19 @@ namespace Lab_HotelApp.data_
             string[] files = IOManager.GetFiles(IOManager.DIR_HOTELS);
             if (files.Length > 0)
             {
-                result = Int32.Parse(files[files.Length])+1;
+                result = Int32.Parse(Path.GetFileNameWithoutExtension(files[files.Length-1]))+1;
             }
             return result;
+        }
+
+        public static void DeleteHotel(Hotel hotel)
+        {
+            IOManager.deleteFile(IOManager.DIR_HOTELS, hotel.ID.ToString());
+        }
+
+        internal static void UpdateHotel(Hotel hotel)
+        {
+            IOManager.updateFile(IOManager.DIR_HOTELS, hotel.ID.ToString(), hotel.GetWrittableString());
         }
     }
 }

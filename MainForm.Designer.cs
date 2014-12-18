@@ -42,6 +42,7 @@
             this.hotelsListView.Size = new System.Drawing.Size(430, 357);
             this.hotelsListView.TabIndex = 0;
             this.hotelsListView.UseCompatibleStateImageBehavior = false;
+            this.hotelsListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.onHotelSelected);
             // 
             // btnAdd
             // 

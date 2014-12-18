@@ -33,3 +33,4 @@ D:\DEV\workspace\csharp\Lab_HotelApp\bin\Debug\Lab_HotelApp.pdb
 D:\DEV\workspace\csharp\Lab_HotelApp\obj\Debug\Lab_HotelApp.exe
 D:\DEV\workspace\csharp\Lab_HotelApp\obj\Debug\Lab_HotelApp.pdb
 D:\DEV\workspace\csharp\Lab_HotelApp\obj\Debug\Lab_HotelApp.CreateHotelForm.resources
+D:\DEV\workspace\csharp\Lab_HotelApp\obj\Debug\Lab_HotelApp.HotelDetailsForm.resources

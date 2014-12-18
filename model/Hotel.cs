@@ -16,6 +16,7 @@ namespace Lab_HotelApp.model
         private List<Preference> _Preferences;
 
         public Hotel(int id, String name, String adress, List<Room> rooms, List<Preference> preferences) {
+            ID = id;
             Name = name;
             Adress = adress;
 
@@ -85,7 +86,8 @@ namespace Lab_HotelApp.model
                 return null;
             }
             string[] d = data.Split('~');
-            return new Hotel(Int16.Parse(d[0]), d[1], d[2], new List<Room>(), new List<Preference>());
+            int id = Int32.Parse(d[0]);
+            return new Hotel(id, d[1], d[2], new List<Room>(), new List<Preference>());
         }
 
         public override string GetWrittableString()
