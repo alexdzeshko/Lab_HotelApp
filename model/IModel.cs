@@ -11,5 +11,7 @@ namespace Lab_HotelApp.model
         public abstract T FromString(String data);
 
         public abstract String GetWrittableString();
+
+        public int ID { get; set; }
     }
 }

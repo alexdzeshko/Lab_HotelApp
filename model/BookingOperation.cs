@@ -8,10 +8,6 @@ namespace Lab_HotelApp.model
 {
     public class BookingOperation : Model<BookingOperation>
     {
-        private Hotel _hotel;
-        private Customer _customer;
-        private List<Room> mRoomList;
-        private int mGuestCount;
 
         public BookingOperation()
         {
@@ -27,8 +23,13 @@ namespace Lab_HotelApp.model
 
         public override string GetWrittableString()
         {
-            return String.Join("~", _hotel.ID, _customer.Name, mGuestCount);
+            return String.Join("~", Hotel.ID, Customer.Name, GuestCount);
         }
+
+        public Hotel Hotel { get; set; }
+        public Customer Customer { get; set; }
+        public List<Room> RoomList { get; set; }
+        public int GuestCount { get; set; }
     }
     
 }

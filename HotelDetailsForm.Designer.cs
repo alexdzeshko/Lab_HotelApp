@@ -35,6 +35,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.listViewRooms = new System.Windows.Forms.ListBox();
+            this.textViewAbout = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // checkBoxEdit
@@ -53,7 +55,7 @@
             this.inputName.Location = new System.Drawing.Point(12, 36);
             this.inputName.Name = "inputName";
             this.inputName.ReadOnly = true;
-            this.inputName.Size = new System.Drawing.Size(196, 20);
+            this.inputName.Size = new System.Drawing.Size(206, 20);
             this.inputName.TabIndex = 1;
             // 
             // inputAdress
@@ -61,13 +63,13 @@
             this.inputAdress.Location = new System.Drawing.Point(13, 63);
             this.inputAdress.Name = "inputAdress";
             this.inputAdress.ReadOnly = true;
-            this.inputAdress.Size = new System.Drawing.Size(195, 20);
+            this.inputAdress.Size = new System.Drawing.Size(205, 20);
             this.inputAdress.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(214, 43);
+            this.label1.Location = new System.Drawing.Point(224, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 13);
             this.label1.TabIndex = 3;
@@ -76,7 +78,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(214, 63);
+            this.label2.Location = new System.Drawing.Point(224, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 4;
@@ -84,7 +86,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(13, 226);
+            this.btnSave.Location = new System.Drawing.Point(13, 307);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 5;
@@ -95,7 +97,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(197, 226);
+            this.btnClose.Location = new System.Drawing.Point(210, 307);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 6;
@@ -103,11 +105,31 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.onCloseClick);
             // 
+            // listViewRooms
+            // 
+            this.listViewRooms.FormattingEnabled = true;
+            this.listViewRooms.Location = new System.Drawing.Point(13, 155);
+            this.listViewRooms.Name = "listViewRooms";
+            this.listViewRooms.Size = new System.Drawing.Size(272, 121);
+            this.listViewRooms.TabIndex = 7;
+            this.listViewRooms.SelectedIndexChanged += new System.EventHandler(this.listViewRooms_SelectedIndexChanged);
+            // 
+            // textViewAbout
+            // 
+            this.textViewAbout.Location = new System.Drawing.Point(13, 90);
+            this.textViewAbout.Name = "textViewAbout";
+            this.textViewAbout.ReadOnly = true;
+            this.textViewAbout.Size = new System.Drawing.Size(272, 53);
+            this.textViewAbout.TabIndex = 8;
+            this.textViewAbout.Text = "";
+            // 
             // HotelDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(300, 342);
+            this.Controls.Add(this.textViewAbout);
+            this.Controls.Add(this.listViewRooms);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label2);
@@ -131,5 +153,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.ListBox listViewRooms;
+        private System.Windows.Forms.RichTextBox textViewAbout;
     }
 }

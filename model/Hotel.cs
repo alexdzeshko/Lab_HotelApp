@@ -9,75 +9,34 @@ namespace Lab_HotelApp.model
 {
     public class Hotel : Model<Hotel>
     {
-        private int _ID;
-        private string _Name;
-        private string _Adress;
-        private List<Room> _Rooms;
-        private List<Preference> _Preferences;
 
-        public Hotel(int id, String name, String adress, List<Room> rooms, List<Preference> preferences) {
+        public Hotel(int id, String name, String adress, List<int> rooms) {
             ID = id;
             Name = name;
             Adress = adress;
 
             Rooms = rooms;
-            Preferences = preferences;
         }
 
         public Hotel()
         {
-            
             // TODO: Complete member initialization
         }
+
         public Hotel(String name, String adress)
         {
             Name = name;
             Adress = adress;
-            Rooms = new List<Room>();
-            Preferences = new List<Preference>();
+            Rooms = new List<int>();
         }
 
-        public int ID
-        {
-            //set the person name
-            set { this._ID = value; }
-            //get the person name 
-            get { return this._ID; }
-        }
+        public string Name { get; set; }
 
-        public string Name
-        {
-            //set the person name
-            set { this._Name = value; }
-            //get the person name 
-            get { return this._Name; }
-        }
+        public string Adress { get; set; }
 
-        public string Adress
-        {
-            //set the adress
-            set { this._Adress = value; }
-            //get the adress 
-            get { return this._Adress; }
-        }
+        public List<int> Rooms { get; set; }
 
-        public List<Room> Rooms
-        {
-            //set the adress
-            set { this._Rooms = value; }
-            //get the adress 
-            get { return this._Rooms; }
-        }
-
-        public List<Preference> Preferences
-        {
-            //set the adress
-            set { this._Preferences = value; }
-            //get the adress 
-            get { return this._Preferences; }
-        }
-
-
+        public string About { get; set; }
 
         public override Hotel FromString(string data)
         {
@@ -87,7 +46,16 @@ namespace Lab_HotelApp.model
             }
             string[] d = data.Split('~');
             int id = Int32.Parse(d[0]);
-            return new Hotel(id, d[1], d[2], new List<Room>(), new List<Preference>());
+
+            List<int> rooms = new List<int>();
+            foreach (string rid in d[4].Split(','))
+            {
+                if(!String.IsNullOrEmpty(rid)) rooms.Add(Int32.Parse(rid));
+            }
+
+            Hotel hotel = new Hotel(id, d[1], d[2], rooms);
+            hotel.About = d[3];
+            return hotel;
         }
 
         public override string GetWrittableString()
@@ -97,17 +65,8 @@ namespace Lab_HotelApp.model
         }
 
         public override string ToString() {
-            return String.Join(" : ", _Name, _Adress, "rooms = " + _Rooms.Count, getPreferenceString());
+            return String.Join(" : ", Name, Adress, "rooms = " + Rooms.Count);
         }
 
-        private object getPreferenceString()
-        {
-            string s = "";
-            foreach (Preference p in Preferences)
-            {
-                s += p.Value+", ";
-            }
-            return s;
-        }
     }
 }

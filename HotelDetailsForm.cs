@@ -15,12 +15,14 @@ namespace Lab_HotelApp
     public partial class HotelDetailsForm : Form
     {
         private Hotel hotel;
+        private List<Room> rooms;
         MainForm.Callback callback;
 
         public HotelDetailsForm(Hotel hotel, MainForm.Callback callback)
         {
             this.hotel = hotel;
             this.callback = callback;
+            rooms = DataManager.GetRooms(hotel);
             InitializeComponent();
             InitUi();
 
@@ -32,6 +34,9 @@ namespace Lab_HotelApp
             {
                 inputAdress.Text = hotel.Adress;
                 inputName.Text = hotel.Name;
+                textViewAbout.Text = hotel.About;
+
+
             }
         }
 
@@ -41,6 +46,7 @@ namespace Lab_HotelApp
             btnSave.Visible = c;
             inputAdress.ReadOnly = !c;
             inputName.ReadOnly = !c;
+            textViewAbout.ReadOnly = !c;
         }
 
         private void onSaveClick(object sender, EventArgs e)
@@ -55,6 +61,11 @@ namespace Lab_HotelApp
         private void onCloseClick(object sender, EventArgs e)
         {
             Dispose();
+        }
+
+        private void listViewRooms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //todo open room view
         }
     }
 }

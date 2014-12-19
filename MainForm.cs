@@ -19,12 +19,12 @@ namespace Lab_HotelApp
         public MainForm()
         {
             InitializeComponent();
-            FillHotels();
+            
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            FillListView();
+            FillHotels();
         }
 
         
@@ -48,9 +48,14 @@ namespace Lab_HotelApp
             }
         }
 
-        private void FillHotels()
+        private async void FillHotels()
         {
-            hotels = DataManager.Instance.GetHotels();
+            progressBar1.Style = ProgressBarStyle.Marquee;
+
+            hotels = await DataManager.Instance.GetHotelsAsync();
+
+            progressBar1.Style = ProgressBarStyle.Continuous;
+            FillListView();
         }
 
         private void FillListView()
@@ -76,10 +81,13 @@ namespace Lab_HotelApp
             if (update)
             {
                 FillHotels();
-                FillListView();
+                
             }
         }
+
         public delegate void Callback(bool action);
+
+        public delegate void Callback<T>(Model<T> action);
 
         private void onHotelSelected(object sender, ListViewItemSelectionChangedEventArgs e)
         {

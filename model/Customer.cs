@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab_HotelApp.model
 {
-    class Customer : Person
+    public class Customer : Person
     {
 
         public Customer(string name, DateTime bday, string email, string ccNumber, string ccHolder)
