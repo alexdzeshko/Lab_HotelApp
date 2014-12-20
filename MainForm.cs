@@ -43,7 +43,7 @@ namespace Lab_HotelApp
             if (hotelsListView.SelectedItems.Count == 1)
             {
                 Hotel hotel = (Hotel)hotelsListView.SelectedItems[0].Tag;
-                DataManager.DeleteHotel(hotel);
+                DataManager.Instance.DeleteHotel(hotel);
                 Update(true);
             }
         }
@@ -86,8 +86,6 @@ namespace Lab_HotelApp
         }
 
         public delegate void Callback(bool action);
-
-        public delegate void Callback<T>(Model<T> action);
 
         private void onHotelSelected(object sender, ListViewItemSelectionChangedEventArgs e)
         {

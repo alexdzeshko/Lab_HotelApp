@@ -8,14 +8,14 @@ namespace Lab_HotelApp.model
 {
     public class Room : Model<Room>
     {
-        private HashSet<Preference> _preferenceList;
 
-        public Room(string type, int bedCount, int price)
+        public Room(int id, string type, int bedCount, int price)
         {
+            ID = id;
             Type = type;
             BedCount = bedCount;
             Price = price;
-            _preferenceList = new HashSet<Preference>();
+            Preferences = new List<Preference>();
         }
 
         public Room()
@@ -26,12 +26,14 @@ namespace Lab_HotelApp.model
         public override Room FromString(string data)
         {
             string[] vals = data.Split('~');
-            return new Room(vals[0], Int16.Parse(vals[1]), Int16.Parse(vals[2]));
+            Room room = new Room(Int32.Parse(vals[0]), vals[1], Int32.Parse(vals[2]), Int32.Parse(vals[3]));  
+            room.Preferences = Preference.FromString(vals[4]);
+            return room;
         }
 
         public override string GetWrittableString()
         {
-            return String.Join("~", Type, BedCount.ToString(), Price.ToString());
+            return String.Join("~", ID, Type, BedCount.ToString(), Price.ToString(), Preference.GetWrittableString(Preferences));
         }
 
         public string Type { get; set; }
@@ -42,13 +44,9 @@ namespace Lab_HotelApp.model
 
         public void AddPreference(Preference preference)
         {
-            _preferenceList.Add(preference);
+            Preferences.Add(preference);
         }
 
-        public HashSet<Preference> Preferences { 
-            get { return this._preferenceList; }
-
-            set { this._preferenceList = value; } 
-        }
+        public List<Preference> Preferences { get; set; }
     }
 }

@@ -37,6 +37,8 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.listViewRooms = new System.Windows.Forms.ListBox();
             this.textViewAbout = new System.Windows.Forms.RichTextBox();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.btnAddRoom = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // checkBoxEdit
@@ -123,11 +125,31 @@
             this.textViewAbout.TabIndex = 8;
             this.textViewAbout.Text = "";
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(12, 349);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(273, 23);
+            this.progressBar.TabIndex = 9;
+            // 
+            // btnAddRoom
+            // 
+            this.btnAddRoom.Location = new System.Drawing.Point(94, 307);
+            this.btnAddRoom.Name = "btnAddRoom";
+            this.btnAddRoom.Size = new System.Drawing.Size(75, 23);
+            this.btnAddRoom.TabIndex = 10;
+            this.btnAddRoom.Text = "Add room";
+            this.btnAddRoom.UseVisualStyleBackColor = true;
+            this.btnAddRoom.Visible = false;
+            this.btnAddRoom.Click += new System.EventHandler(this.onAddRoom);
+            // 
             // HotelDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 342);
+            this.ClientSize = new System.Drawing.Size(300, 384);
+            this.Controls.Add(this.btnAddRoom);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.textViewAbout);
             this.Controls.Add(this.listViewRooms);
             this.Controls.Add(this.btnClose);
@@ -155,5 +177,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ListBox listViewRooms;
         private System.Windows.Forms.RichTextBox textViewAbout;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Button btnAddRoom;
     }
 }

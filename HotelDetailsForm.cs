@@ -22,10 +22,15 @@ namespace Lab_HotelApp
         {
             this.hotel = hotel;
             this.callback = callback;
-            rooms = DataManager.GetRooms(hotel);
+            LoadRooms(hotel);
             InitializeComponent();
             InitUi();
 
+        }
+
+        private void LoadRooms(Hotel hotel)
+        {
+            rooms = DataManager.Instance.GetRooms(hotel);
         }
 
         private void InitUi()
@@ -36,7 +41,11 @@ namespace Lab_HotelApp
                 inputName.Text = hotel.Name;
                 textViewAbout.Text = hotel.About;
 
-
+                listViewRooms.Items.Clear();
+                rooms.ForEach(delegate(Room r)
+                {
+                    listViewRooms.Items.Add(r.Type + " - $"+r.Price.ToString());
+                });
             }
         }
 
@@ -44,16 +53,19 @@ namespace Lab_HotelApp
         {
             bool c = checkBoxEdit.Checked;
             btnSave.Visible = c;
+            btnAddRoom.Visible = c;
             inputAdress.ReadOnly = !c;
             inputName.ReadOnly = !c;
             textViewAbout.ReadOnly = !c;
         }
 
-        private void onSaveClick(object sender, EventArgs e)
+        private async void onSaveClick(object sender, EventArgs e)
         {
+            progressBar.Style = ProgressBarStyle.Marquee;
             hotel.Name = inputName.Text;
             hotel.Adress = inputAdress.Text;
-            DataManager.UpdateHotel(hotel);
+            hotel.About = textViewAbout.Text;
+            await DataManager.Instance.UpdateHotelAsync(hotel);
             callback(true);
             Dispose();
         }
@@ -65,7 +77,27 @@ namespace Lab_HotelApp
 
         private void listViewRooms_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //todo open room view
+            if (listViewRooms.SelectedIndex > 0)
+            {
+                Room room = rooms.ElementAt(listViewRooms.SelectedIndex);
+                new RoomForm(hotel, room, new MainForm.Callback(Update)).Show();
+            }
+            
+        }
+
+        private void onAddRoom(object sender, EventArgs e)
+        {
+            
+            new RoomForm(hotel, new MainForm.Callback(Update)).Show();
+        }
+
+        public void Update(bool update)
+        {
+            if (update)
+            {
+                LoadRooms(hotel);
+                InitUi();
+            }
         }
     }
 }

@@ -60,10 +60,22 @@ namespace Lab_HotelApp.model
 
         public override string GetWrittableString()
         {
-             
-            return String.Join("~", ID, Name, Adress);
+            return String.Join("~", ID, Name, Adress, About, RoomIdsString());
         }
 
+        private string RoomIdsString()
+        {
+            string result = "";
+            if (Rooms.Count > 0)
+            {
+                foreach (int id in Rooms)
+                {
+                    result += id.ToString() + ",";
+                }
+                result = result.Substring(0, result.Length - 1);
+            }
+            return result;
+        }
         public override string ToString() {
             return String.Join(" : ", Name, Adress, "rooms = " + Rooms.Count);
         }

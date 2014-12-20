@@ -44,7 +44,7 @@ namespace Lab_HotelApp.data_
         public static string[] MockHotels = { Hotel1, Hotel2, Hotel3, Hotel4 };
 
         public static Hotel DEFAULT_HOTEL = new Hotel().FromString(Hotel1);
-        public static Room DEFAULT_ROOM = new Room("Basic room", 1, 10);
+        public static Room DEFAULT_ROOM = new Room(0, "Basic room", 1, 10);
 
         public List<Hotel> getMockHotels()
         {
@@ -92,34 +92,73 @@ namespace Lab_HotelApp.data_
             return Task.Factory.StartNew<List<Hotel>>(() => GetHotels());
         }
 
-        private void Log()
+        public int GetNewHotelId()
         {
-            Console.WriteLine("Thread started");
+            return GetNewID(IOManager.DIR_HOTELS);
         }
-        private int GetNewHotelId()
+
+        public int GetNewRoomId()
+        {
+            return GetNewID(IOManager.DIR_ROOMS);
+        }
+
+        private int GetNewID(string dir)
         {
             int result = 0;
-            string[] files = IOManager.GetFiles(IOManager.DIR_HOTELS);
+            string[] files = IOManager.GetFiles(dir);
             if (files.Length > 0)
             {
-                result = Int32.Parse(Path.GetFileNameWithoutExtension(files[files.Length-1]))+1;
+                result = Int32.Parse(Path.GetFileNameWithoutExtension(files[files.Length - 1])) + 1;
             }
             return result;
         }
 
-        public static void DeleteHotel(Hotel hotel)
+        public void DeleteHotel(Hotel hotel)
         {
             IOManager.deleteFile(IOManager.DIR_HOTELS, hotel.ID.ToString());
+            Thread.Sleep(1000);
         }
 
-        internal static void UpdateHotel(Hotel hotel)
+        internal void UpdateHotel(Hotel hotel)
         {
             IOManager.updateFile(IOManager.DIR_HOTELS, hotel.ID.ToString(), hotel.GetWrittableString());
+            Thread.Sleep(1000);
         }
 
-        internal static List<Room> GetRooms(Hotel hotel)
+        internal Task UpdateHotelAsync(Hotel hotel)
         {
-            throw new NotImplementedException();
+            return Task.Factory.StartNew(()=> UpdateHotel(hotel));
+        }
+
+        public List<Room> GetRooms(Hotel hotel)
+        {
+            List<Room> result = new List<Room>();
+            foreach (int rid in hotel.Rooms)
+            {
+                string data = IOManager.ReadFile(IOManager.DIR_ROOMS, rid.ToString());
+                if (!String.IsNullOrEmpty(data))
+                {
+                    Room room = new Room().FromString(data);
+                    result.Add(room);
+                }
+            }
+            return result;
+        }
+
+        public Task<List<Room>> GetRoomsAsync(Hotel hotel)
+        {
+            return Task.Factory.StartNew<List<Room>>(() => GetRooms(hotel));
+        }
+
+        internal void UpdateRoom(Room room)
+        {
+            IOManager.updateFile(IOManager.DIR_ROOMS, room.ID.ToString(), room.GetWrittableString());
+            Thread.Sleep(1000);
+        }
+
+        internal Task UpdateRoomAsync(Room room)
+        {
+            return Task.Factory.StartNew(() => UpdateRoom(room));
         }
     }
 }
