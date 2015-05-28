@@ -71,7 +71,7 @@
     <Compile Include="model\Hotel.cs" />
     <Compile Include="model\Person.cs" />
     <Compile Include="model\IEmployeeOperation.cs" />
-    <Compile Include="model\IModel.cs" />
+    <Compile Include="model\Model.cs" />
     <Compile Include="model\Preference.cs" />
     <Compile Include="model\Room.cs" />
     <Compile Include="Program.cs" />

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Lab_HotelApp.model
 {
@@ -60,6 +62,7 @@ namespace Lab_HotelApp.model
 
         public override string GetWrittableString()
         {
+            
             return String.Join("~", ID, Name, Adress, About, RoomIdsString());
         }
 

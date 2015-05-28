@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Lab_HotelApp.model
 {
@@ -47,6 +48,7 @@ namespace Lab_HotelApp.model
             Preferences.Add(preference);
         }
 
+        [XmlElement("Preference")]
         public List<Preference> Preferences { get; set; }
     }
 }

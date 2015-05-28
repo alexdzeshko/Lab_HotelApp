@@ -10,6 +10,11 @@ namespace Lab_HotelApp.model
     {
         private String _Value;
 
+        public Preference()
+        {
+
+        }
+
         public Preference(String value)
         {
             this._Value = value;

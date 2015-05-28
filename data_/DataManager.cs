@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+
 
 namespace Lab_HotelApp.data_
 {
@@ -68,10 +70,42 @@ namespace Lab_HotelApp.data_
             if (hotel != null)
             {
                 hotel.ID = GetNewHotelId();
-                IOManager.updateFile(IOManager.DIR_HOTELS, hotel.ID.ToString(), hotel.GetWrittableString());
+                IOManager.updateFile(IOManager.DIR_HOTELS, hotel.ID.ToString(), SerializeObject(hotel));
             }
             
         }
+
+        
+            private string SerializeObject<T>(T toSerialize)
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(toSerialize.GetType());
+
+                using (StringWriter textWriter = new StringWriter())
+                {
+                    xmlSerializer.Serialize(textWriter, toSerialize);
+                    return textWriter.ToString();
+                }
+            }
+
+            public T DeserializeFromString<T>(string objectData)
+            {
+                return (T)DeserializeFromString(objectData, typeof(T));
+            }
+
+            public object DeserializeFromString(string objectData, Type type)
+            {
+                var serializer = new XmlSerializer(type);
+                object result;
+
+                using (TextReader reader = new StringReader(objectData))
+                {
+                    result = serializer.Deserialize(reader);
+                }
+
+                return result;
+            }
+        
+        
 
         public List<Hotel> GetHotels()
         {
@@ -79,7 +113,7 @@ namespace Lab_HotelApp.data_
             foreach (string fileName in IOManager.GetFiles(IOManager.DIR_HOTELS))
             {
                 string hotelData = IOManager.ReadFile(fileName);
-                Hotel hotel = new Hotel().FromString(hotelData);
+                Hotel hotel = DeserializeFromString<Hotel>(hotelData);//new Hotel().FromString(hotelData);
                 result.Add(hotel);
             }
             //TODO
@@ -121,7 +155,8 @@ namespace Lab_HotelApp.data_
 
         internal void UpdateHotel(Hotel hotel)
         {
-            IOManager.updateFile(IOManager.DIR_HOTELS, hotel.ID.ToString(), hotel.GetWrittableString());
+            IOManager.updateFile(IOManager.DIR_HOTELS, hotel.ID.ToString(), SerializeObject(hotel)//hotel.GetWrittableString()
+                );
             Thread.Sleep(1000);
         }
 
@@ -138,7 +173,7 @@ namespace Lab_HotelApp.data_
                 string data = IOManager.ReadFile(IOManager.DIR_ROOMS, rid.ToString());
                 if (!String.IsNullOrEmpty(data))
                 {
-                    Room room = new Room().FromString(data);
+                    Room room = DeserializeFromString<Room>(data);
                     result.Add(room);
                 }
             }
@@ -152,7 +187,7 @@ namespace Lab_HotelApp.data_
 
         internal void UpdateRoom(Room room)
         {
-            IOManager.updateFile(IOManager.DIR_ROOMS, room.ID.ToString(), room.GetWrittableString());
+            IOManager.updateFile(IOManager.DIR_ROOMS, room.ID.ToString(), SerializeObject(room));
             Thread.Sleep(1000);
         }
 
